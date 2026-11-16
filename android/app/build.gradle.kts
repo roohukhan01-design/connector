@@ -3,9 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
+
 android {
     namespace = "com.roohu.connect"
     compileSdk = 34
+
     defaultConfig {
         applicationId = "com.roohu.connect"
         minSdk = 26
@@ -13,13 +15,15 @@ android {
         versionCode = 1
         versionName = "0.1.0"
     }
+
     buildTypes {
         release {
             isMinifyEnabled = false
-            // TEMPORARY: signed with the debug key so the release APK can install.
+            // Temporary M1 signing only. Replace with a private release keystore before public distribution.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -28,6 +32,7 @@ android {
     buildFeatures { compose = true }
     lint { abortOnError = false }
 }
+
 dependencies {
     implementation(platform("androidx.compose:compose-bom:2024.09.00"))
     implementation("androidx.compose.material3:material3")

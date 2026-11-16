@@ -6,6 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "test": "node test/protocol.test.js",
     "dist": "electron-builder --win nsis --publish never"
   },
   "dependencies": {
