@@ -16,7 +16,7 @@ class Discovery(ctx: Context) {
     private val listener = object : NsdManager.DiscoveryListener {
         override fun onServiceFound(s: NsdServiceInfo) {
             nsd.resolveService(s, object : NsdManager.ResolveListener {
-                override fun onResolved(r: NsdServiceInfo) {
+                override fun onServiceResolved(r: NsdServiceInfo) {
                     val h = r.host?.hostAddress ?: return
                     found.update { l -> l.filter { it.name != r.serviceName } + Found(r.serviceName, h, r.port) }
                 }
