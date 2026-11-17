@@ -51,7 +51,7 @@ class Hub extends EventEmitter {
     server.on('error', (e) => this.emit('error', e.message));
     this.wss = new WebSocketServer({ server, path: '/ws', maxPayload: 1 << 20 });
     this.wss.on('connection', (ws) => this.onConn(ws));
-    server.listen(PORT, '0.0.0.0');
+    server.listen(PORT, process.env.ROOHU_HOST || '0.0.0.0');
     try {
       this.bonjour = new Bonjour();
       this.bonjour.publish({ name: os.hostname(), type: 'roohu', port: PORT, txt: { id: this.db.pcId } });
