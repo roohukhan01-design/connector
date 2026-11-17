@@ -7,6 +7,7 @@ const path = require('node:path');
 const WebSocket = require('ws');
 
 process.env.ROOHU_PORT = String(49000 + Math.floor(Math.random() * 1000));
+process.env.ROOHU_HOST = '127.0.0.1';
 const { Hub } = require('../server');
 
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'roohu-connect-test-'));
